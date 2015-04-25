@@ -1,0 +1,99 @@
+<!--
+    @license
+    Copyright (c) 2015 Rob Resendez. All rights reserved.
+    This code may only be used under the license found at http://github.com/robrez/poly-animate-css
+-->
+<!--
+`poly-animate-css` is an element that can animate content by using
+`poly-animate-css-all`, a `core-style` containing animations from
+the animate.css project (see http://daneden.github.io/animate.css/).
+
+Example:
+
+    <poly-animate-css animation="bounce">
+      <div>Hello</div>
+    </poly-animate-css>
+
+It is also possible to use the core-style producers directly,
+without wrapping content in a `poly-animate-css` element.
+`poly-animate-css-all` contains all of the animations, but
+you may choose to use just one specific set of animations.
+Just import the style producer, reference it in your template
+and add `class="animated someAnimationName"`
+
+Example:
+    <link href="poly-animate-css-bouncing-entrances.html" rel="import">
+
+    <polymer-element name="x-test">
+      <template>
+        <core-style ref="polyAnimateCssBouncingEntrances"></core-style>
+        <div class="animated bounce">Hello</div>
+      </template>
+    </polymer-element>
+
+
+@group poly-animate-css
+@element poly-animate-css
+@homepage github.io
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="poly-animate-css-all.html">
+
+<polymer-element name="poly-animate-css">
+
+  <template>
+    <core-style ref="polyAnimateCss"></core-style>
+    <style>
+       :host {
+         display: block;
+         position: relative;
+       }
+    </style>
+    <content id="content"></content>
+  </template>
+
+  <script>
+    Polymer('poly-animate-css', {
+  
+       publish: {
+         /**
+          * The animation to use
+          *
+          * @attribute animation
+          * @type string
+          * @default ''
+          */
+          animation: ''
+        },
+
+        eventDelegates: {
+          webkitAnimationEnd: 'animationEnded',
+          mozAnimationEnd: 'animationEnded',
+          animationend: 'animationEnded',
+        },
+
+        animationChanged: function() {
+            //console.log("animation: ", this.animation);
+            this._clear();
+            if(this.animation && this.animation.length > 0) {
+                this.classList.add("animated");
+                this.classList.add(this.animation);
+            }
+        },
+
+        animationEnded: function() {
+            //console.log("ended");
+            this._clear();
+        },
+
+        _clear: function() {
+            if(this.animation && this.animation.length > 0) {
+                this.classList.remove("animated");
+                this.classList.remove(this.animation);
+            }
+       }
+    });
+  </script>
+</polymer-element>
+

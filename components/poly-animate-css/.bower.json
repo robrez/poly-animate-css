@@ -1,0 +1,35 @@
+{
+  "name": "poly-animate-css",
+  "authors": [
+    "Rob Resendez <resendez.java@gmail.com>"
+  ],
+  "description": "Animate.css for Polymer",
+  "license": "MIT",
+  "homepage": "https://github.com/robrez/poly-animate-css",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.5",
+    "core-style": "Polymer/core-style#~0.5.5"
+  },
+  "keywords": [
+    "web-components",
+    "animate.css",
+    "poly-animate-css"
+  ],
+  "_release": "47f853c4ad",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "47f853c4ad9f85a873b65fc7f0076e3c7a890870"
+  },
+  "_source": "git://github.com/robrez/poly-animate-css.git",
+  "_target": "master",
+  "_originalSource": "robrez/poly-animate-css",
+  "_direct": true
+}

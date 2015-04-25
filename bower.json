@@ -1,0 +1,7 @@
+{
+  "name": "poly-animate-css#gh-pages",
+  "private": true,
+  "dependencies": {
+    "poly-animate-css": "robrez/poly-animate-css#master"
+  }
+}
