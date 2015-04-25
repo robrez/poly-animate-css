@@ -29,57 +29,6 @@
 </head>
 <body unresolved>
 
-  <polymer-element name="animate-example" attributes="animation">
-    <template>
-      <core-style ref="polyAnimateCss"></core-style>
-      <style>
-         :host {
-           position: relative;
-           display: block;
-           padding: 20px;
-         }
-         .demo {
-           padding: 40px;
-           font-size: 56px;
-           font-weight: 100;
-           text-align: center;
-           letter-spacing: -4px;
-         }
-      </style>
-      <div on-animationend="{{animationEnded}}" id="demo" class="demo">Animate Me</div>
-    </template>
-    <script>
-      Polymer('animate-example', {
-          eventDelegates: {
-            webkitAnimationEnd: 'animationEnded',
-            mozAnimationEnd: 'animationEnded',
-            animationend: 'animationEnded',
-          },
-
-          animationChanged: function() {
-              console.log("animation: ", this.animation);
-              this._clear();
-              if(this.animation && this.animation.length > 0) {
-                  this.$.demo.classList.add("animated");
-                  this.$.demo.classList.add(this.animation);
-              }
-          },
-
-          animationEnded: function() {
-              console.log("ended");
-              this._clear();
-          },
-
-          _clear: function() {
-              if(this.animation && this.animation.length > 0) {
-                  this.$.demo.classList.remove("animated");
-                  this.$.demo.classList.remove(this.animation);
-              }
-         }
-      });
-    </script>
-  </polymer-element>
-
   <polymer-element name="animate-options" attributes="option">
     <template>
       <style>
@@ -203,8 +152,17 @@
            display: block;
            padding: 20px;
          }
+         #example {
+           padding: 40px;
+           font-size: 56px;
+           font-weight: 100;
+           text-align: center;
+           letter-spacing: -4px;
+         }
       </style>
-      <animate-example animation="{{selectedAnimation}}"></animate-example>
+      <poly-animate-css id="example" animation="{{selectedAnimation}}">
+        <div>Animate Me</div>
+      </poly-animate-css>
       <animate-options class="animated slideInUp" option="{{selectedAnimation}}"></animate-options>
     </template>
     <script>
@@ -218,7 +176,6 @@
       });
     </script>
   </polymer-element>
-
 
   <div id="header" layout horizontal center>
     <div class="appTitle">poly-animate-css</div>
