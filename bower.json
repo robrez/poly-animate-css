@@ -5,6 +5,7 @@
     "Rob Resendez <resendez.java@gmail.com>"
   ],
   "license": "MIT",
+  "homepage": "https://github.com/robrez/poly-animate-css",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -15,5 +16,8 @@
   "dependencies": {
     "polymer": "Polymer/polymer#~0.5.5",
     "core-style": "Polymer/core-style#~0.5.5"
-  }
+  },
+  "keywords": [
+    "web-components"
+  ]
 }
